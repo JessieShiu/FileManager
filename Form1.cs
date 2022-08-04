@@ -10,11 +10,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Configuration;
 
 namespace FileManager
 {
     public partial class Form1 : Form
     {
+
+        private List<string> PackageList => txtPackage.Text.Trim().Replace("\r\n", ",").Split(',').ToList();
+
+
         public Form1()
         {
             InitializeComponent();
@@ -31,12 +36,14 @@ namespace FileManager
             {
                 dialog.IsFolderPicker = true;
                 dialog.Multiselect = false;
-                //dialog.DefaultDirectory = this.OutputPathBox.Text;
+                dialog.DefaultDirectory = ConfigurationManager.AppSettings["SrcPath"];
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
                     txtSrcPath.Text = dialog.FileName;
+                    SaveKey("SrcPath", txtSrcPath.Text.Trim());
                 }
             }
+           
 
             var rootDirInfo = new DirectoryInfo(txtSrcPath.Text);
 
@@ -120,10 +127,45 @@ namespace FileManager
             // Copy each subdirectory using recursion.
             foreach (DirectoryInfo diSourceSubDir in source.GetDirectories())
             {
-                DirectoryInfo nextTargetSubDir =
-                    target.CreateSubdirectory(diSourceSubDir.Name);
+                DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(diSourceSubDir.Name);
                 CopyAll(diSourceSubDir, nextTargetSubDir);
             }
+        }
+
+        private void btnSelDest_Click(object sender, EventArgs e)
+        {
+            using (CommonOpenFileDialog dialog = new CommonOpenFileDialog())
+            {
+                dialog.IsFolderPicker = true;
+                dialog.Multiselect = false;
+                dialog.DefaultDirectory = ConfigurationManager.AppSettings["DestPath"];
+                if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                {
+                    txtDestPath.Text = dialog.FileName;
+                    SaveKey("DestPath", txtDestPath.Text.Trim());
+                }
+            }
+            
+        }
+
+        private void SaveKey(string key, string value)
+        {
+            // Open App.Config of executable
+            Configuration config =ConfigurationManager.OpenExeConfiguration (ConfigurationUserLevel.None);
+
+            // Add an Application Setting.
+            //config.AppSettings.Settings.Add(key, value + " ");
+            config.AppSettings.Settings[key].Value = value;
+
+            // Save the changes in App.config file.
+            config.Save(ConfigurationSaveMode.Modified);
+
+            // Force a reload of a changed section.
+            ConfigurationManager.RefreshSection("appSettings");
+
+            //configuration.AppSettings.Settings[key].Value = value;
+            //configuration.Save(ConfigurationSaveMode.Full, true);
+            //ConfigurationManager.RefreshSection("appSettings");
         }
 
 
