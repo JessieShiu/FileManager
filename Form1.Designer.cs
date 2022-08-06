@@ -34,7 +34,7 @@
             this.txtDestPath = new System.Windows.Forms.TextBox();
             this.btnSelSrc = new System.Windows.Forms.Button();
             this.btnSelDest = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtResult = new System.Windows.Forms.TextBox();
             this.txtPackage = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnMerge = new System.Windows.Forms.Button();
@@ -92,17 +92,17 @@
             this.btnSelDest.UseVisualStyleBackColor = true;
             this.btnSelDest.Click += new System.EventHandler(this.btnSelDest_Click);
             // 
-            // textBox1
+            // txtResult
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(219, 111);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(775, 613);
-            this.textBox1.TabIndex = 6;
+            this.txtResult.Location = new System.Drawing.Point(219, 111);
+            this.txtResult.Multiline = true;
+            this.txtResult.Name = "txtResult";
+            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtResult.Size = new System.Drawing.Size(775, 613);
+            this.txtResult.TabIndex = 6;
             // 
             // txtPackage
             // 
@@ -133,6 +133,7 @@
             this.btnMerge.TabIndex = 9;
             this.btnMerge.Text = "產生盤點包";
             this.btnMerge.UseVisualStyleBackColor = true;
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
             // Form1
             // 
@@ -142,7 +143,7 @@
             this.Controls.Add(this.btnMerge);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPackage);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtResult);
             this.Controls.Add(this.btnSelDest);
             this.Controls.Add(this.btnSelSrc);
             this.Controls.Add(this.txtDestPath);
@@ -167,7 +168,7 @@
         private System.Windows.Forms.TextBox txtDestPath;
         private System.Windows.Forms.Button btnSelSrc;
         private System.Windows.Forms.Button btnSelDest;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.TextBox txtPackage;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnMerge;

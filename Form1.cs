@@ -18,6 +18,8 @@ namespace FileManager
     {
 
         private List<string> PackageList => txtPackage.Text.Trim().Replace("\r\n", ",").Split(',').ToList();
+        private string DestPath => txtDestPath.Text.Trim();
+        public string SrcPath => txtSrcPath.Text.Trim();
 
 
         public Form1()
@@ -47,10 +49,9 @@ namespace FileManager
 
             var rootDirInfo = new DirectoryInfo(txtSrcPath.Text);
 
-            List<string> result = new List<string>();
-            WalkDirectoryTree(rootDirInfo, result);
-
-            textBox1.Text = string.Join(Environment.NewLine, result);
+            //List<string> result = new List<string>();
+            //WalkDirectoryTree(rootDirInfo, result);
+            //txtResult.Text = string.Join(Environment.NewLine, result);
         }
 
         private void GetAllFilesAndFolders(string rootFolder)
@@ -132,6 +133,21 @@ namespace FileManager
             }
         }
 
+        private static void CopyFilesRecursively(string sourcePath, string targetPath)
+        {
+            //Now Create all of the directories
+            foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
+            {
+                Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+            }
+
+            //Copy all the files & Replaces any files with the same name
+            foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
+            {
+                File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
+            }
+        }
+
         private void btnSelDest_Click(object sender, EventArgs e)
         {
             using (CommonOpenFileDialog dialog = new CommonOpenFileDialog())
@@ -168,6 +184,30 @@ namespace FileManager
             //ConfigurationManager.RefreshSection("appSettings");
         }
 
+        private void btnMerge_Click(object sender, EventArgs e)
+        {
+            string topDir = Path.Combine(DestPath, "更新包");
+            if (!Directory.Exists(topDir))
+                Directory.CreateDirectory(topDir);
 
+            foreach(string package in PackageList)
+            {
+                string srcfolder = Directory.GetDirectories(SrcPath, package, SearchOption.AllDirectories).ToList().FirstOrDefault();
+
+                if (string.IsNullOrWhiteSpace(srcfolder))
+                {
+                    txtResult.AppendText($"{package} Folder Not Exist;");
+                }
+
+                string destFolder = Path.Combine(topDir, package);
+                Directory.CreateDirectory(destFolder);
+
+                CopyFilesRecursively(srcfolder, destFolder);
+
+            }
+
+            MessageBox.Show("Merge Done!");
+
+        }
     }
 }
