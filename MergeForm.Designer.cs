@@ -1,6 +1,6 @@
 ﻿namespace MesFileTool
 {
-    partial class Form1
+    partial class MergeForm
     {
         /// <summary>
         /// 設計工具所需的變數。
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSrcPath = new System.Windows.Forms.TextBox();
@@ -40,6 +39,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnMerge = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.chkCopy = new System.Windows.Forms.CheckBox();
+            this.chkCheck = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnOpen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -65,21 +67,21 @@
             // 
             this.txtSrcPath.Location = new System.Drawing.Point(107, 7);
             this.txtSrcPath.Name = "txtSrcPath";
-            this.txtSrcPath.Size = new System.Drawing.Size(627, 29);
+            this.txtSrcPath.Size = new System.Drawing.Size(583, 29);
             this.txtSrcPath.TabIndex = 2;
             // 
             // txtDestPath
             // 
             this.txtDestPath.Location = new System.Drawing.Point(107, 41);
             this.txtDestPath.Name = "txtDestPath";
-            this.txtDestPath.Size = new System.Drawing.Size(627, 29);
+            this.txtDestPath.Size = new System.Drawing.Size(583, 29);
             this.txtDestPath.TabIndex = 3;
             // 
             // btnSelSrc
             // 
-            this.btnSelSrc.Location = new System.Drawing.Point(740, 6);
+            this.btnSelSrc.Location = new System.Drawing.Point(696, 7);
             this.btnSelSrc.Name = "btnSelSrc";
-            this.btnSelSrc.Size = new System.Drawing.Size(71, 30);
+            this.btnSelSrc.Size = new System.Drawing.Size(54, 30);
             this.btnSelSrc.TabIndex = 4;
             this.btnSelSrc.Text = "選取";
             this.btnSelSrc.UseVisualStyleBackColor = true;
@@ -87,9 +89,9 @@
             // 
             // btnSelDest
             // 
-            this.btnSelDest.Location = new System.Drawing.Point(740, 40);
+            this.btnSelDest.Location = new System.Drawing.Point(696, 43);
             this.btnSelDest.Name = "btnSelDest";
-            this.btnSelDest.Size = new System.Drawing.Size(71, 30);
+            this.btnSelDest.Size = new System.Drawing.Size(54, 30);
             this.btnSelDest.TabIndex = 5;
             this.btnSelDest.Text = "選取";
             this.btnSelDest.UseVisualStyleBackColor = true;
@@ -129,9 +131,10 @@
             // 
             // btnMerge
             // 
-            this.btnMerge.Location = new System.Drawing.Point(817, 7);
+            this.btnMerge.Location = new System.Drawing.Point(913, 7);
+            this.btnMerge.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnMerge.Name = "btnMerge";
-            this.btnMerge.Size = new System.Drawing.Size(123, 63);
+            this.btnMerge.Size = new System.Drawing.Size(83, 63);
             this.btnMerge.TabIndex = 9;
             this.btnMerge.Text = "產生盤點包";
             this.btnMerge.UseVisualStyleBackColor = true;
@@ -146,25 +149,62 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "訊息";
             // 
+            // chkCopy
+            // 
+            this.chkCopy.AutoSize = true;
+            this.chkCopy.Checked = true;
+            this.chkCopy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCopy.Location = new System.Drawing.Point(759, 7);
+            this.chkCopy.Name = "chkCopy";
+            this.chkCopy.Size = new System.Drawing.Size(108, 24);
+            this.chkCopy.TabIndex = 12;
+            this.chkCopy.Text = "複製更新包";
+            this.chkCopy.UseVisualStyleBackColor = true;
+            // 
+            // chkCheck
+            // 
+            this.chkCheck.AutoSize = true;
+            this.chkCheck.Checked = true;
+            this.chkCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCheck.Location = new System.Drawing.Point(760, 37);
+            this.chkCheck.Name = "chkCheck";
+            this.chkCheck.Size = new System.Drawing.Size(136, 24);
+            this.chkCheck.TabIndex = 13;
+            this.chkCheck.Text = "檢查folder名稱";
+            this.chkCheck.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(760, 67);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(137, 24);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "產生Top folder";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // btnOpen
             // 
             this.btnOpen.BackColor = System.Drawing.Color.Transparent;
             this.btnOpen.BackgroundImage = global::MesFileTool.Properties.Resources.open_door;
             this.btnOpen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnOpen.FlatAppearance.BorderSize = 0;
-            this.btnOpen.Location = new System.Drawing.Point(946, 7);
+            this.btnOpen.Location = new System.Drawing.Point(964, 76);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Padding = new System.Windows.Forms.Padding(5);
-            this.btnOpen.Size = new System.Drawing.Size(50, 63);
+            this.btnOpen.Size = new System.Drawing.Size(32, 29);
             this.btnOpen.TabIndex = 10;
             this.btnOpen.UseVisualStyleBackColor = false;
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
-            // Form1
+            // MergeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 561);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkCheck);
+            this.Controls.Add(this.chkCopy);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.btnMerge);
@@ -178,10 +218,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MergeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "進入神秘區";
             this.Text = "MES更新工具";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -204,6 +243,9 @@
         private System.Windows.Forms.Button btnMerge;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chkCopy;
+        private System.Windows.Forms.CheckBox chkCheck;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

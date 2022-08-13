@@ -20,7 +20,7 @@ namespace MesFileTool
             if (args.Length > 0)
                 Application.Run(new UpdateForm());
             else
-                Application.Run(new Form1());
+                Application.Run(new MDIParent());
         }
     }
 }
