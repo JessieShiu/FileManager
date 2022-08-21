@@ -17,7 +17,6 @@ namespace MesFileTool
 {
     public partial class MergeForm : Form
     {
-        private static bool IsAuth = true;
         private List<string> PackageNameList => txtPackage.Text.Trim().Replace("\r\n", ",").Split(',').OrderBy(x => x).ToList();
         private string DestPath
         {
@@ -57,25 +56,6 @@ namespace MesFileTool
             btnOpen.BackColor = Color.Transparent;
             ToolTip ToolTip1 = new ToolTip();
             ToolTip1.SetToolTip(this.btnOpen, "進入神秘區");
-
-            
-            //DialogForm = new DialogForm();
-            //DialogForm.FormClosed += (sender, e) => { };
-            //DialogForm.ConfirmBtn.Click += (sender, e) =>
-            //{
-            //    IsAuth = DialogForm.AuthCode == "admin@123";
-            //    if (IsAuth)
-            //    {
-            //        this.Hide();
-            //        DialogForm.Hide();
-            //        ShowUpdateForm();
-            //    }
-            //    else
-            //    {
-            //        DialogForm.Close();
-            //        MessageBox.Show("授權碼錯誤");
-            //    }
-            //};
         }
 
         private void Form1_Load(object sender, EventArgs e)

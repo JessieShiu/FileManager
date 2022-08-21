@@ -33,12 +33,13 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.MenuStripItem_Merge = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuStripItem_fileSearch = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuStripItem_SPBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStripItem_Update = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStripItem_Search = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.MenuStripItem_ExecSql = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStripItem_Merge = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStripItem_fileSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStripItem_SPBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -65,13 +66,31 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuStripItem_Merge,
             this.MenuStripItem_fileSearch,
-            this.MenuStripItem_SPBackup});
+            this.MenuStripItem_SPBackup,
+            this.MenuStripItem_ExecSql});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(10, 4, 0, 4);
             this.menuStrip.Size = new System.Drawing.Size(1008, 32);
             this.menuStrip.TabIndex = 4;
             this.menuStrip.Text = "menuStrip1";
+            // 
+            // MenuStripItem_Update
+            // 
+            this.MenuStripItem_Update.Name = "MenuStripItem_Update";
+            this.MenuStripItem_Update.Size = new System.Drawing.Size(32, 19);
+            // 
+            // MenuStripItem_Search
+            // 
+            this.MenuStripItem_Search.Name = "MenuStripItem_Search";
+            this.MenuStripItem_Search.Size = new System.Drawing.Size(32, 19);
+            // 
+            // MenuStripItem_ExecSql
+            // 
+            this.MenuStripItem_ExecSql.Image = global::MesFileTool.Properties.Resources.sql_icon;
+            this.MenuStripItem_ExecSql.Name = "MenuStripItem_ExecSql";
+            this.MenuStripItem_ExecSql.Size = new System.Drawing.Size(99, 24);
+            this.MenuStripItem_ExecSql.Text = "SQL執行";
             // 
             // MenuStripItem_Merge
             // 
@@ -96,16 +115,6 @@
             this.MenuStripItem_SPBackup.Size = new System.Drawing.Size(88, 24);
             this.MenuStripItem_SPBackup.Text = "SP備份";
             this.MenuStripItem_SPBackup.Click += new System.EventHandler(this.MenuStripItem_SPBackup_Click);
-            // 
-            // MenuStripItem_Update
-            // 
-            this.MenuStripItem_Update.Name = "MenuStripItem_Update";
-            this.MenuStripItem_Update.Size = new System.Drawing.Size(32, 19);
-            // 
-            // MenuStripItem_Search
-            // 
-            this.MenuStripItem_Search.Name = "MenuStripItem_Search";
-            this.MenuStripItem_Search.Size = new System.Drawing.Size(32, 19);
             // 
             // MDIParent
             // 
@@ -137,6 +146,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuStripItem_Search;
         private System.Windows.Forms.ToolStripMenuItem MenuStripItem_fileSearch;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.ToolStripMenuItem MenuStripItem_ExecSql;
     }
 }
 
