@@ -45,7 +45,11 @@ namespace MesFileTool
 
         private void btnSelSrc_Click(object sender, EventArgs e)
         {
-            txtSrcPath.Text = FileUtility.OpenFolderDialog();
+            string folder = FileUtility.OpenFolderDialog();
+            if (!string.IsNullOrWhiteSpace(folder))
+            {
+                txtSrcPath.Text = folder;
+            }
         }
 
         private void btnExec_Click(object sender, EventArgs e)
@@ -105,7 +109,6 @@ namespace MesFileTool
                         else isFind = findCnt > 0;
 
                         if (isFind) WriteLog(path);
-
                     }
                     catch (Exception ex)
                     {
@@ -159,6 +162,14 @@ namespace MesFileTool
             }));
         }
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var cell =  dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
+            if (!string.IsNullOrWhiteSpace(cell))
+            {
+                System.Diagnostics.Process.Start(cell);
+            }
+        }
     }
 
 

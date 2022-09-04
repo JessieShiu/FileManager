@@ -32,6 +32,11 @@ namespace MesFileTool
             ShowChildForm(new SearchForm(), (sender as ToolStripMenuItem).Text);
         }
 
+        private void MenuStripItem_SPBackup_Click(object sender, EventArgs e)
+        {
+            ShowChildForm(new DBBackupForm(), (sender as ToolStripMenuItem).Text);
+        }
+
         private void ShowChildForm(Form form, string title)
         {
             bool isExist = CheckFormExist(form.Name);
@@ -63,11 +68,6 @@ namespace MesFileTool
                 }
             }
             return false;
-        }
-
-        private void MenuStripItem_SPBackup_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("建構中...");
         }
     }
 }

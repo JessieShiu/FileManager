@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -13,16 +14,29 @@ namespace MesFileTool.Utility
     {
         public static string OpenFolderDialog(string defaultFolder = "")
         {
-            using (var fbd = new FolderBrowserDialog())
-            {
-                fbd.SelectedPath = defaultFolder;
-                DialogResult result = fbd.ShowDialog();
+            //using (var fbd = new FolderBrowserDialog())
+            //{
+            //    fbd.SelectedPath = defaultFolder;
+            //    DialogResult result = fbd.ShowDialog();
 
-                if (result == DialogResult.OK)
-                {
-                    return fbd.SelectedPath;
-                }
+            //    if (result == DialogResult.OK)
+            //    {
+            //        return fbd.SelectedPath;
+            //    }
+            //}
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog
+            {
+                InitialDirectory = defaultFolder,
+                IsFolderPicker = true,
+                Multiselect = false,
+            };
+
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                return dialog.FileName;
             }
+
             return "";
         }
 
