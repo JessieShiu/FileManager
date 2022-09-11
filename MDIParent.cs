@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +21,7 @@ namespace MesFileTool
 
         private void MDIParent_Load(object sender, EventArgs e)
         {
+            Text += $"〔 beta {FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion}〕";
             ShowChildForm(new MergeForm(), MenuStripItem_Merge.Text);
         }
 
@@ -68,6 +71,11 @@ namespace MesFileTool
                 }
             }
             return false;
+        }
+
+        private void MenuStripItem_FileList_Click(object sender, EventArgs e)
+        {
+            ShowChildForm(new FileList(), (sender as ToolStripMenuItem).Text);
         }
     }
 }
